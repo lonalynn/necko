@@ -16,16 +16,15 @@ int main()
      // TODO
 
      // Define Variables
-     char *fileName;
-     char *outputString; 
+     char *fileName = NULL;
+     char *outputString = NULL; 
 
      int years; double income, totalIncome,
-     outputIncome; int line;
+     outputIncome; 
+     int line = 0;
 
     // a pointer to the output file's name.
-     char *outputFilePtr;
-
-     line = 1;
+     char *outputFilePtr = NULL;
      
      // Show Title
         // functions: printString, printCharacters, printEndline(s)
@@ -44,17 +43,14 @@ int main()
      // open file and check if it was successful
         // function: fopen, print, if
      if(openInputFile(fileName)) {
-
-        //check how much income was made
-            // function: for, if, readDoubleFromFile,
             years = readIntegerFromFile();
             while(!checkForEndOfInputFile()) {
-                if (line % 2 == 0) {
-                income = readDoubleFromFile();
-                totalIncome = totalIncome + income;
+                if (line % 2 != 0) {
+                    income = readDoubleFromFile();
+                    totalIncome = totalIncome + income;
                 }
-                else if (line % 1 == 0) {
-                years = readIntegerFromFile();
+                else {
+                    years = readIntegerFromFile();
                 }
                 outputIncome = calculateArizonaTax(totalIncome);
 
